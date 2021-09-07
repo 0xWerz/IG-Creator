@@ -11,7 +11,10 @@ open botAccountCreate.py
 | Config               | Usage                                                                                                |
 | :------------------- | :--------------------------------------------------------------------------------------------------- |
 | chrome driver        | Path to chromedriver.exe                                                                             |
-
+| proxy_service        | add your proxies list to avoid the ip ban from the automation                                        |
+|                      |                                                                                                      |
+|                      |                                                                                                      |
+   
 
 
 ## Starting 
