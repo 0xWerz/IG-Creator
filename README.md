@@ -19,6 +19,7 @@ open botAccountCreate.py
 
 ## Starting 
 run <strong>`python botAccountCreate.py --chrome`</strong> for chrome
+
 run <strong>`python botAccountCreate.py --firefox`</strong> for firefox 
 
 
