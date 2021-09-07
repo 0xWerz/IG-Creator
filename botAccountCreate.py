@@ -30,7 +30,7 @@ if args.chrome:
     from selenium.webdriver.chrome.options import Options
     options = Options()
     options.add_argument(f'user-agent={userAgent}')
-    driver= webdriver.Chrome(options=options, executable_path=r"D:\programming\auto insta accs creator\instagram-auto-create-account\chromedriver.exe")
+    driver= webdriver.Chrome(options=options, executable_path=r"## your chrome driver path ")
 
 driver.get("https://www.instagram.com/accounts/emailsignup/")
 time.sleep(3)
