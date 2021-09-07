@@ -1,2 +1,4 @@
 
-"# auto-instagram-account-creator-" 
+- Requirements:<br>
+  - run `pip install -r requirements.txt`
+<br>
