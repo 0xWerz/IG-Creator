@@ -9,6 +9,7 @@ Setting it in the path<br>
     -line 26 for gecko driver
     -line 33 for chrome driver
 ## Starting 
+
 run <strong>`python botAccountCreate.py --chrome`</strong> for chrome
 
 run <strong>`python botAccountCreate.py --firefox`</strong> for firefox 
