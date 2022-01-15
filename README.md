@@ -1,5 +1,4 @@
 ## Configurations
-
   - run `pip install -r requirements.txt`
 <br>
 Download the browserdriver:
