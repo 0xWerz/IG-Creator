@@ -2,7 +2,7 @@
   - run `pip install -r requirements.txt`
 <br>
 Download the browserdriver:
- - for chrome [chromedriver] (https://chromedriver.chromium.org/downloads) 
+ - for chrome [chromedriver] (https://chromedriver.chromium.org/downloads) <br>
  - for firefox [geckodriver] (https://github.com/mozilla/geckodriver/releases)
 Setting it in the path<br>
   -open botAccountCreate.py
