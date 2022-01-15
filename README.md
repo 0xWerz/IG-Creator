@@ -7,8 +7,8 @@ Download the browserdriver:
 - for firefox [geckodriver](https://github.com/mozilla/geckodriver/releases)
 <h5>Setting it in the path </h5> 
   -open botAccountCreate.py
-    -line 26 for gecko driver
-    -line 33 for chrome driver
+    - line 26 for gecko driver
+    - line 33 for chrome driver
  
 ## Starting 
 
