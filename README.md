@@ -19,3 +19,4 @@ Download the browserdriver:
 
 ## Future updates
 - [ ] no gui version only http requests.
+- [ ] advanced proxy service
