@@ -162,7 +162,7 @@ while True:
 
 
 
-        # filling instagram code  
+        # fill instagram security code  
         driver.find_element_by_name('email_confirmation_code').send_keys(code, Keys.ENTER)
         sleep(5)
 
