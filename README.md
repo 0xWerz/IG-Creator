@@ -5,7 +5,7 @@ Download the browserdriver:
 
 - for chrome [chromedriver](https://chromedriver.chromium.org/downloads)
 - for firefox [geckodriver](https://github.com/mozilla/geckodriver/releases) <br>
-Setting it in the path 
+<h4>Setting it in the path </h4> 
   - open botAccountCreate.py 
   <br>
     - line 57 for gecko driver <br>
