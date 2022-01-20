@@ -20,7 +20,7 @@ while True:
         address_url = 'https://10minutesemail.net/getEmailAddress'
         main_page = 'https://10minutesemail.net'
 
-        # http request
+        # main request
         main_page_req = requests.post(main_page)
 
 
