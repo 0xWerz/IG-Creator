@@ -54,17 +54,16 @@ while True:
 
                 profile = webdriver.FirefoxProfile()
                 profile.set_preference("general.useragent.ovrride", userAgent)    
-                driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"your gecko driver here")
+                driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"your gecko driver path here")
         #for chrome driver : 
 
         if args.chrome:
                 from selenium.webdriver.chrome.options import Options
                 options = Options()
                 options.add_argument(f'user-agent={userAgent}')
-                driver= webdriver.Chrome('D:\Instagram-accounts-creator/chromedriver.exe')
-        driver.get('https://www.instagram.com/accounts/emailsignup')
+                driver= webdriver.Chrome('your chrome driver path here')
         sleep(2)
-        # accepting cookies windows
+        # accepting cookies window
         try:
                 cookie = driver.find_element_by_xpath('/html/body/div[4]/div/div/button[1]').click()
         except:
