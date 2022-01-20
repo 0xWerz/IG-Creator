@@ -16,3 +16,6 @@ Download the browserdriver:
 -run <strong>`python botAccountCreate.py --chrome`</strong> for chrome
 
 -run <strong>`python botAccountCreate.py --firefox`</strong> for firefox 
+
+## future updates
+- [ ] no gui version only http requests.
