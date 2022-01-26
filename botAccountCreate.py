@@ -2,10 +2,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from fake_useragent import UserAgent
 import accountInfoGenerator as account
 from selenium import webdriver
 from time import sleep
+from fake_useragent import UserAgent
 import argparse
 import requests
 
@@ -14,7 +14,36 @@ while True:
 
 
 
-        # importing the box information 
+
+        # ---------------------------------------------------------------
+                # running the browser
+
+
+        parser = argparse.ArgumentParser()
+        group = parser.add_mutually_exclusive_group(required=True)
+        group.add_argument("--firefox", action="store_true", help="Use Firefox - geckodriver")
+        group.add_argument("--chrome", action="store_true", help = "Use Chrome - chromedriver")
+
+        args = parser.parse_args()
+        ua = UserAgent()
+        userAgent = ua.random
+        #print(userAgent)
+        # for firefox driver : 
+        if args.firefox:
+
+                profile = webdriver.FirefoxProfile()
+                profile.set_preference("general.useragent.ovrride", userAgent)    
+                driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"your gecko driver path here")
+                
+        #for chrome driver : 
+
+        if args.chrome:
+                from selenium.webdriver.chrome.options import Options
+                options = Options()
+                options.add_argument(f'user-agent={userAgent}')
+                driver= webdriver.Chrome('your chrome driver')
+        driver.get('https://www.instagram.com/accounts/emailsignup')
+                # importing the box information 
 
         box_url = 'https://10minutesemail.net/getInbox'
         address_url = 'https://10minutesemail.net/getEmailAddress'
@@ -36,32 +65,7 @@ while True:
         reco_key = str(address_data['recover_key'])
         print('recovery key: ' + reco_key)
         
-        # ---------------------------------------------------------------
-                # running the browser
 
-
-        parser = argparse.ArgumentParser()
-        group = parser.add_mutually_exclusive_group(required=True)
-        group.add_argument("--firefox", action="store_true", help="Use Firefox - geckodriver")
-        group.add_argument("--chrome", action="store_true", help = "Use Chrome - chromedriver")
-
-        args = parser.parse_args()
-        ua = UserAgent()
-        userAgent = ua.random
-        print(userAgent)
-        # for firefox driver : 
-        if args.firefox:
-
-                profile = webdriver.FirefoxProfile()
-                profile.set_preference("general.useragent.ovrride", userAgent)    
-                driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"your gecko driver path here")
-        #for chrome driver : 
-
-        if args.chrome:
-                from selenium.webdriver.chrome.options import Options
-                options = Options()
-                options.add_argument(f'user-agent={userAgent}')
-                driver= webdriver.Chrome('your chrome driver path here')
         sleep(2)
         # accepting cookies window
         try:
@@ -150,7 +154,7 @@ while True:
                 sleep(10)
         else:
 
-                print("the code received!\nAnd saved in the backups file")
+                print("the code received!\n-everything saved in the backups file")
                 dic_conv = box_req[0]
 
                 #print(type(code))
