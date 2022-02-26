@@ -19,5 +19,5 @@ Download the browserdriver:
 
 ## Future updates
 - [x] http request for the security code 
-- [ ] no gui version only http requests.
+- [ ] http requests version.
 - [ ] advanced proxy rotating service
