@@ -14,9 +14,9 @@ Download the browserdriver:
  
 ## Starting 
 
--run <strong>`python botAccountCreate.py --chrome`</strong> for chrome
+- run <strong>`python botAccountCreate.py --chrome`</strong> for chrome
 
--run <strong>`python botAccountCreate.py --firefox`</strong> for firefox 
+- run <strong>`python botAccountCreate.py --firefox`</strong> for firefox 
 
 ## Future updates
 - [x] http request for the security code 
