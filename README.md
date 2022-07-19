@@ -1,4 +1,4 @@
-# outdated
+> probably have a lot of bugs...
 ## Configurations
   - run `pip install -r requirements.txt`
 <br>
