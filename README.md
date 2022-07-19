@@ -18,7 +18,22 @@ Download the browserdriver:
 ```ruby
 $ git clone https://github.com/0xWerz/IG-Creator.git
 $ cd IG-Creator
-$ sudo go build main.go -o pgo && cp pgo /usr/bin 
+$ python3 -m pip install -r requirements.txt
+```
+## 📈 Usage
 
+```ruby
+$ python3 main.py --help
+ usage: main.py [-h] (--firefox | --chrome)
 
+ options:
+  -h, --help  show this help message and exit
+  --firefox   Use Firefox - geckodriver
+  --chrome    Use Chrome - chromedriver
+```
+
+## 🖊️ Example
+
+```ruby
+$ python3 main.py --chrome
 ```
