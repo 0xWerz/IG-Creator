@@ -15,33 +15,25 @@ y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTBLUE_EX
 w = Fore.LIGHTWHITE_EX
 
-
+parser = argparse.ArgumentParser()
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument("--firefox", action="store_true", help="Use Firefox - geckodriver")
+group.add_argument("--chrome", action="store_true", help = "Use Chrome - chromedriver")
+args = parser.parse_args()
 try:
         rounds = int(input(f'{y}[{b}?{y}]{w} how many accounts: '))
 except:
         print("Type a correct integer")
 
 for i in range(rounds):
-                # ---------------------------------------------------------------
-                        # running the browser
-
-
-        parser = argparse.ArgumentParser()
-        group = parser.add_mutually_exclusive_group(required=True)
-        group.add_argument("--firefox", action="store_true", help="Use Firefox - geckodriver")
-        group.add_argument("--chrome", action="store_true", help = "Use Chrome - chromedriver")
-
-        args = parser.parse_args()
         ua = UserAgent()
         userAgent = ua.random
-        #print(userAgent)
-        # for firefox driver : 
         if args.firefox:
                 profile = webdriver.FirefoxProfile()
                 profile.set_preference("general.useragent.ovrride", userAgent)    
                 driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"Gecko driver path here") # Put chrome driver path here!
                 
-        #for chrome driver : 
+        #Chrome driver: 
 
         if args.chrome:
                 from selenium.webdriver.chrome.options import Options
@@ -74,7 +66,7 @@ for i in range(rounds):
         email_field.send_keys(mail_address)
         print('email: ' + mail_address)
 
-        # fill full
+        # fill full name
 
         fullname_field = driver.find_element_by_name('fullName')
         fullname_field.send_keys(account.generatingName())
@@ -86,7 +78,7 @@ for i in range(rounds):
 
         print('username: ' + name)
 
-        # Fill password value
+        # Fill password 
 
         password_field = driver.find_element_by_name('password')
         password_field.send_keys(account.generatePassword())  # You can determine another password here.

@@ -13,13 +13,12 @@ Download the browserdriver:
 50       driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"Gecko driver path here")
 
 ```
-## Starting 
+## ⬇️ Installation
 
-- run `python botAccountCreate.py --chrome` for chrome
+```ruby
+$ git clone https://github.com/0xWerz/IG-Creator.git
+$ cd IG-Creator
+$ sudo go build main.go -o pgo && cp pgo /usr/bin 
 
-- run `python botAccountCreate.py --firefox` for firefox 
 
-## Future updates
-- [x] http request for the security code 
-- [ ] http requests version.
-- [ ] advanced proxy rotating service
+```
