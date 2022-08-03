@@ -2,9 +2,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import utils.accounts as account
 from selenium import webdriver
 from time import sleep
+import utils
 from selenium import *
 from fake_useragent import UserAgent
 import argparse
@@ -30,25 +30,26 @@ for i in range(rounds):
         userAgent = ua.random
         if args.firefox:
                 try:
+                        firefox_driver_path = str(input(f'{y}[{b}?{y}]{g} A firefox driver path: '))
+
                         profile = webdriver.FirefoxProfile()
                         profile.set_preference("general.useragent.ovrride", userAgent)    
-                        driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"Gecko driver path here") # Put chrome driver path here!
+                        driver = webdriver.Firefox(firefox_profile=profile, executable_path=f'{firefox_driver_path}') # Put chrome driver path here!
                 except:
                         print(f'\n{r}[{b}!{r}]{r} Set your firefox driver')
                         break
-                print("Set your firefox driver")
         #Chrome driver: 
 
         if args.chrome:
                 try:
+                        chrome_driver_path = str(input(f'{y}[{b}?{y}]{g} A chrome driver path: '))
                         from selenium.webdriver.chrome.options import Options
                         options = Options()
                         options.add_argument(f'user-agent={userAgent}')
-                        driver = webdriver.Chrome('Chrome driver path here') # Put chrome driver path here!
+                        driver = webdriver.Chrome(f'{chrome_driver_path}') # Put chrome driver path here!
                 except:
-                        print(f'\n{r}[{b}!{r}]{r}Set your chrome driver')
+                        print(f'\n{r}[{b}!{r}]{r} Set a valid path')
                         break       
-                print("Set your chrome driver")
         driver.get('https://www.instagram.com/accounts/emailsignup')
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[1])
@@ -65,19 +66,19 @@ for i in range(rounds):
                 cookie = driver.find_element_by_xpath('/html/body/div[4]/div/div/button[1]').click()
         except:
                 pass
-        name = account.username()
+        name = utils.username()
 
         # Fill email
         sleep(0.5)
         email_field = driver.find_element_by_name('emailOrPhone')
         email_field.send_keys(mail_address)
         print('email: ' + mail_address)
-
+        
         # fill full name
 
         fullname_field = driver.find_element_by_name('fullName')
-        fullname_field.send_keys(account.generatingName())
-        print('Full name: '+ account.generatingName())
+        fullname_field.send_keys(utils.generatingName())
+        print('Full name: '+ utils.generatingName())
         #fill username
         username_field = driver.find_element_by_name('username')
         username_field.send_keys(name)
@@ -88,8 +89,8 @@ for i in range(rounds):
         # Fill password 
 
         password_field = driver.find_element_by_name('password')
-        password_field.send_keys(account.generatePassword())  # You can determine another password here.
-        password = account.generatePassword()
+        password_field.send_keys(utils.generatePassword())  # You can determine another password here.
+        password = utils.generatePassword()
         sumbit = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='react-root']/section/main/div/div/div[1]/div/form/div[7]/div/button"))).click()
         print('password: ' + password)
 
@@ -97,7 +98,6 @@ for i in range(rounds):
         unavail_mess = ["A user with that username already exists.", "This username isn't available. Please try another."]
         sleep(1.2)
         # New username if unavailable
-
         try :
                 unavailable_user = driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/div[1]/div[2]/form/div[8]/p').text
                 if unavailable_user in unavail_mess: 
@@ -166,5 +166,5 @@ for i in range(rounds):
                         print('Account created information stored on a credentials.txt ')
         except:
                 pass
-        with open('/credentials/credentials.txt','a') as f:
+        with open('credentials/credentials.txt','a') as f:
                 f.write(f"""Email: {mail_address}\nUsername: {name}\nPassword:{password}\n  -----------""")

@@ -417,9 +417,5 @@ def generatePassword(passwd=None):
     else:
         return passwd
 
-# Generating a Email
-def generatingEmail():
-    return ''.join(username() + '@mail.com')
-
 if __name__=='__main__':
     print(username(size=12, chars=string.ascii_lowercase + random.choice(['.', '_'])))
