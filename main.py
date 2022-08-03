@@ -9,39 +9,46 @@ from selenium import *
 from fake_useragent import UserAgent
 import argparse
 from colorama import Fore
-
-
 y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTBLUE_EX
 w = Fore.LIGHTWHITE_EX
-
+r = Fore.RED
+g = Fore.GREEN
 parser = argparse.ArgumentParser()
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("--firefox", action="store_true", help="Use Firefox - geckodriver")
 group.add_argument("--chrome", action="store_true", help = "Use Chrome - chromedriver")
 args = parser.parse_args()
 try:
-        rounds = int(input(f'{y}[{b}?{y}]{w} how many accounts: '))
-except:
-        print("Type a correct integer")
+        rounds = int(input(f'{y}[{b}?{y}]{g} how many accounts: '))
 
+except:
+        print(f'\n{r}[{b}!{r}]{r} Type a correct integer')
+        exit()
 for i in range(rounds):
         ua = UserAgent()
         userAgent = ua.random
         if args.firefox:
-                profile = webdriver.FirefoxProfile()
-                profile.set_preference("general.useragent.ovrride", userAgent)    
-                driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"Gecko driver path here") # Put chrome driver path here!
-                
+                try:
+                        profile = webdriver.FirefoxProfile()
+                        profile.set_preference("general.useragent.ovrride", userAgent)    
+                        driver = webdriver.Firefox(firefox_profile=profile, executable_path=r"Gecko driver path here") # Put chrome driver path here!
+                except:
+                        print(f'\n{r}[{b}!{r}]{r} Set your firefox driver')
+                        break
+                print("Set your firefox driver")
         #Chrome driver: 
 
         if args.chrome:
-                from selenium.webdriver.chrome.options import Options
-                options = Options()
-                options.add_argument(f'user-agent={userAgent}')
-                driver = webdriver.Chrome('Chrome driver path here') # Put chrome driver path here!
-
-
+                try:
+                        from selenium.webdriver.chrome.options import Options
+                        options = Options()
+                        options.add_argument(f'user-agent={userAgent}')
+                        driver = webdriver.Chrome('Chrome driver path here') # Put chrome driver path here!
+                except:
+                        print(f'\n{r}[{b}!{r}]{r}Set your chrome driver')
+                        break       
+                print("Set your chrome driver")
         driver.get('https://www.instagram.com/accounts/emailsignup')
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[1])
